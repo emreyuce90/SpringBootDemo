@@ -1,6 +1,7 @@
 package com.emre.springdemo.repositories;
 
 import com.emre.springdemo.entity.Product;
+import com.emre.springdemo.entity.ProductUpdateDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -27,6 +28,17 @@ public class ProductRepository {
 
     public boolean DeleteProduct(String id) {
         return getAllProducts.removeIf(product -> product.getId().equals(id));
+    }
+
+    public Product updateProduct(String id, ProductUpdateDto productUpdateDto) {
+        // eşleşen kaydı bul
+       Product oldProduct = getProductById(id);
+       // gerekli güncellemeleri yap
+       oldProduct.setName(productUpdateDto.getName());
+       oldProduct.setPrice(productUpdateDto.getPrice());
+       oldProduct.setQuantity(productUpdateDto.getQuantity());
+       // Güncellenen productı döndür
+       return new Product(id,productUpdateDto.getName(),productUpdateDto.getPrice(),productUpdateDto.getQuantity());
     }
 
 }

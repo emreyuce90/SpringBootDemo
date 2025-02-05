@@ -4,6 +4,7 @@ package com.emre.springdemo.controllers;
 
 
 import com.emre.springdemo.entity.Product;
+import com.emre.springdemo.entity.ProductUpdateDto;
 import com.emre.springdemo.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,8 +42,8 @@ public class ProductRestController {
     }
 
     @PutMapping("{id}")
-    public Product updateProduct(@PathVariable(name = "id") String id, @RequestBody Product product) {
-        return null;
+    public Product updateProduct(@PathVariable(name = "id") String id, @RequestBody ProductUpdateDto productUpdateDto) {
+        return productService.UpdateProduct(id,productUpdateDto);
     }
 
 }

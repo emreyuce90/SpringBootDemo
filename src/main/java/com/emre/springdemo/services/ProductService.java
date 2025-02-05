@@ -1,6 +1,7 @@
 package com.emre.springdemo.services;
 
 import com.emre.springdemo.entity.Product;
+import com.emre.springdemo.entity.ProductUpdateDto;
 import com.emre.springdemo.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,11 @@ public class ProductService {
 
     public boolean deleteProduct(String id){
         return productRepository.DeleteProduct(id);
+    }
+
+    public Product UpdateProduct(String id, ProductUpdateDto productUpdateDto){
+
+        return productRepository.updateProduct(id, productUpdateDto);
     }
 
 }
